@@ -9,12 +9,15 @@
     <ul>
       <% @skill.projects.each do |project| %>
         <li>
-          <%= project.name %>
-          <%= link_to "Edit", edit_skill_project_path(@skill, project) %> |
+          <b><%= project.name %></b>
+          <%= link_to "Edit", edit_skill_project_path(@skill, project), :class => 'glyphicon glyphicon-edit' %> |
           <%= link_to "Delete", skill_project_path(@skill, project),
                                    :data => {:confirm => "Are you sure?",
-                                                  :method => "delete"} %>
+                                                  :method => "delete"}, :class => 'glyphicon glyphicon-remove' %>
+          <br>
+          <b>Description: </b>
           <p><%= project.description %></p>
+          <b>Github Link: </b>
           <p><%= project.github %></p>
         </li>
       <% end %>
@@ -23,6 +26,6 @@
     <p>There are no projects yet!</p>
   <% end %>
 
-  <p><%= link_to "Return to Skills List", skills_path %></p>
-  <p><%= link_to "Add a new Project to this Skill", new_skill_project_path(@skill) %></p>
+  <p><%= link_to "Return to Skills List", skills_path , :class=> 'btn btn-success btn-sm'%></p>
+  <p><%= link_to "Add a new Project to this Skill", new_skill_project_path(@skill), :class=> 'btn btn-primary btn-sm' %></p>
 </div>
